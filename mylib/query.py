@@ -12,7 +12,9 @@ def query():
     print(cursor.fetchall())
 
     # Perform INSERT only if the record does not already exist
-    cursor.execute("SELECT COUNT(*) FROM DrugUseDB WHERE age = '11' AND n = 1000")
+    cursor.execute(
+        "SELECT COUNT(*) FROM DrugUseDB WHERE age = '11' AND n = 1000"
+    )
     if cursor.fetchone()[0] == 0:
         cursor.execute(
             """
@@ -47,4 +49,3 @@ def query():
     conn.commit()  # Ensure all changes are saved
     conn.close()
     return "Success"  # Return success for testing
-

@@ -10,7 +10,9 @@ import os
 
 
 # load the csv file and insert into a new sqlite3 database
-def load(dataset="/Users/chensi/Desktop/MIDS/Fall 2024/IDS 706/drug-use-by-age.csv"):
+def load(
+    dataset="/Users/chensi/Desktop/MIDS/Fall 2024/IDS 706/drug-use-by-age.csv",
+):
     """ "Transforms and Loads data into the local SQLite3 database"""
 
     # prints the full working directory and path
@@ -51,10 +53,12 @@ def load(dataset="/Users/chensi/Desktop/MIDS/Fall 2024/IDS 706/drug-use-by-age.c
                 sedative_use REAL,
                 sedative_frequency REAL
             )
-        """)
-    
+        """
+    )
+
     # insert
-    c.executemany("""
+    c.executemany(
+        """
         INSERT INTO DrugUseDB (
                 age, n, alcohol_use, alcohol_frequency, marijuana_use, marijuana_frequency, cocaine_use, 
                 cocaine_frequency, crack_use, crack_frequency, heroin_use, heroin_frequency, 
@@ -63,10 +67,9 @@ def load(dataset="/Users/chensi/Desktop/MIDS/Fall 2024/IDS 706/drug-use-by-age.c
                 tranquilizer_use, tranquilizer_frequency, stimulant_use, stimulant_frequency, meth_use, 
                 meth_frequency, sedative_use, sedative_frequency
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """, payload)
+        """,
+        payload,
+    )
     conn.commit()
     conn.close()
     return "DrugUseDB.db"
-
-
-
