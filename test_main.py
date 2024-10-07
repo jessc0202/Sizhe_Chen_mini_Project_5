@@ -3,8 +3,13 @@ Test goes here
 
 """
 
-from mylib.calculator import add
+from mylib.query import query
 
 
-def test_add():
-    assert add(1, 2) == 3
+def test_query():
+    result = query()
+    assert result == "Success"
+
+
+if __name__ == "__main__":
+    test_query()
