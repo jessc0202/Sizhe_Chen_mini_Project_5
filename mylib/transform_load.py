@@ -1,9 +1,3 @@
-"""
-Transforms and Loads data into the local SQLite3 database
-Example:
-,general name,count_products,ingred_FPro,avg_FPro_products,avg_distance_root,ingred_normalization_term,semantic_tree_name,semantic_tree_node
-"""
-
 import sqlite3
 import csv
 import os
@@ -58,18 +52,21 @@ def load(
 
     # insert
     c.executemany(
-        """
-        INSERT INTO DrugUseDB (
-                age, n, alcohol_use, alcohol_frequency, marijuana_use, marijuana_frequency, cocaine_use, 
-                cocaine_frequency, crack_use, crack_frequency, heroin_use, heroin_frequency, 
-                hallucinogen_use, hallucinogen_frequency, inhalant_use, inhalant_frequency, 
-                pain_reliever_use, pain_reliever_frequency, oxycontin_use, oxycontin_frequency, 
-                tranquilizer_use, tranquilizer_frequency, stimulant_use, stimulant_frequency, meth_use, 
-                meth_frequency, sedative_use, sedative_frequency
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """,
-        payload,
+    """
+    INSERT INTO DrugUseDB (
+        age, n, alcohol_use, alcohol_frequency, marijuana_use, marijuana_frequency, 
+        cocaine_use, cocaine_frequency, crack_use, crack_frequency, heroin_use, 
+        heroin_frequency, hallucinogen_use, hallucinogen_frequency, inhalant_use, 
+        inhalant_frequency, pain_reliever_use, pain_reliever_frequency, oxycontin_use, 
+        oxycontin_frequency, tranquilizer_use, tranquilizer_frequency, stimulant_use, 
+        stimulant_frequency, meth_use, meth_frequency, sedative_use, sedative_frequency
+    ) VALUES (
+        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
     )
+    """,
+    payload,
+)
     conn.commit()
     conn.close()
     return "DrugUseDB.db"
+

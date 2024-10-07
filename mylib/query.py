@@ -17,17 +17,23 @@ def query():
     )
     if cursor.fetchone()[0] == 0:
         cursor.execute(
-            """
-            INSERT INTO DrugUseDB (age, n, alcohol_use, alcohol_frequency, marijuana_use, marijuana_frequency, cocaine_use, 
-                                   cocaine_frequency, crack_use, crack_frequency, heroin_use, heroin_frequency, 
-                                   hallucinogen_use, hallucinogen_frequency, inhalant_use, inhalant_frequency, 
-                                   pain_reliever_use, pain_reliever_frequency, oxycontin_use, oxycontin_frequency, 
-                                   tranquilizer_use, tranquilizer_frequency, stimulant_use, stimulant_frequency, meth_use, 
-                                   meth_frequency, sedative_use, sedative_frequency) 
-            VALUES ('11', 1000, 60.0, 5.0, 25.0, 4.0, 2.0, '3.0', 1.0, '2.0', 0.5, '1.0', 0.3, '2.0', 0.2, '1.5', 
-                    0.4, '3.0', 0.2, '2.5', 0.3, '3.5', 0.5, '4.0', 0.1, '2.0', 0.2, '2.5')
-            """
+        """
+        INSERT INTO DrugUseDB (
+            age, n, alcohol_use, alcohol_frequency, marijuana_use, 
+            marijuana_frequency, cocaine_use, cocaine_frequency, crack_use, 
+            crack_frequency, heroin_use, heroin_frequency, hallucinogen_use, 
+            hallucinogen_frequency, inhalant_use, inhalant_frequency, 
+            pain_reliever_use, pain_reliever_frequency, oxycontin_use, 
+            oxycontin_frequency, tranquilizer_use, tranquilizer_frequency, 
+            stimulant_use, stimulant_frequency, meth_use, meth_frequency, 
+            sedative_use, sedative_frequency
+        ) VALUES (
+            '11', 1000, 60.0, 5.0, 25.0, 4.0, 2.0, '3.0', 1.0, '2.0', 0.5, 
+            '1.0', 0.3, '2.0', 0.2, '1.5', 0.4, '3.0', 0.2, '2.5', 0.3, 
+            '3.5', 0.5, '4.0', 0.1, '2.0', 0.2, '2.5'
         )
+        """
+    )
 
     # Perform UPDATE
     cursor.execute(
